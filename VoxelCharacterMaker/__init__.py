@@ -92,6 +92,13 @@ class scale_StartingBlock(bpy.types.Operator):
             self.report({'WARNING'}, "No armature found in the scene.")
             return {'CANCELLED'}
         
+        library_path = get_library_path()
+        bpy.ops.wm.append(
+            filepath=os.path.join(library_path, "Object", "startblock"),
+            directory=os.path.join(library_path, "Object"),
+            filename="startblock"
+        )
+
         return {'FINISHED'}
     
 class scale_Log(bpy.types.Operator):
@@ -106,6 +113,35 @@ class scale_Log(bpy.types.Operator):
         else:
             self.report({'WARNING'}, "No armature found in the scene.")
             return {'CANCELLED'}
+        
+        library_path = get_library_path()
+        bpy.ops.wm.append(
+            filepath=os.path.join(library_path, "Object", "log"),
+            directory=os.path.join(library_path, "Object"),
+            filename="log"
+        )
+        
+        return {'FINISHED'}
+    
+class scale_Log_short(bpy.types.Operator):
+    """Scale the Armature"""
+    bl_idname = "object.log_short_op"
+    bl_label = "短縮丸太"
+
+    def execute(self, context):
+        armature = next((obj for obj in bpy.context.scene.objects if obj.type == 'ARMATURE'), None)
+        if armature:
+            armature.scale = (1.8,1.8,1.8)
+        else:
+            self.report({'WARNING'}, "No armature found in the scene.")
+            return {'CANCELLED'}
+        
+        library_path = get_library_path()
+        bpy.ops.wm.append(
+            filepath=os.path.join(library_path, "Object", "log_short"),
+            directory=os.path.join(library_path, "Object"),
+            filename="log_short"
+        )
         
         return {'FINISHED'}
     
@@ -122,6 +158,13 @@ class scale_Cannon(bpy.types.Operator):
             self.report({'WARNING'}, "No armature found in the scene.")
             return {'CANCELLED'}
         
+        library_path = get_library_path()
+        bpy.ops.wm.append(
+            filepath=os.path.join(library_path, "Object", "cannon"),
+            directory=os.path.join(library_path, "Object"),
+            filename="cannon"
+        )
+
         return {'FINISHED'}
     
 class scale_Bomb(bpy.types.Operator):
@@ -137,6 +180,13 @@ class scale_Bomb(bpy.types.Operator):
             self.report({'WARNING'}, "No armature found in the scene.")
             return {'CANCELLED'}
         
+        library_path = get_library_path()
+        bpy.ops.wm.append(
+            filepath=os.path.join(library_path, "Object", "bomb"),
+            directory=os.path.join(library_path, "Object"),
+            filename="bomb"
+        )
+
         return {'FINISHED'}
     
 class scale_Ballast(bpy.types.Operator):
@@ -152,6 +202,13 @@ class scale_Ballast(bpy.types.Operator):
             self.report({'WARNING'}, "No armature found in the scene.")
             return {'CANCELLED'}
         
+        library_path = get_library_path()
+        bpy.ops.wm.append(
+            filepath=os.path.join(library_path, "Object", "ballast"),
+            directory=os.path.join(library_path, "Object"),
+            filename="ballast"
+        )
+
         return {'FINISHED'}
     
 class scale_first(bpy.types.Operator):
@@ -167,6 +224,12 @@ class scale_first(bpy.types.Operator):
             self.report({'WARNING'}, "No armature found in the scene.")
             return {'CANCELLED'}
         
+        library_path = get_library_path()
+        bpy.ops.wm.append(
+            filepath=os.path.join(library_path, "Object", "controller"),
+            directory=os.path.join(library_path, "Object"),
+            filename="controller"
+        )
         return {'FINISHED'}
 
 class CreateDirectoriesOperator(bpy.types.Operator):
@@ -190,6 +253,8 @@ class CreateDirectoriesOperator(bpy.types.Operator):
         shutil.copy(image_path, os.path.join(character_path, "StartingBlock"))
         os.makedirs(os.path.join(character_path, "Log"), exist_ok=True)
         shutil.copy(image_path, os.path.join(character_path, "Log"))
+        os.makedirs(os.path.join(character_path, "Log", "short"), exist_ok=True)
+        shutil.copy(image_path, os.path.join(character_path, "Log", "short"))
         os.makedirs(os.path.join(character_path, "Cannon"), exist_ok=True)
         shutil.copy(image_path, os.path.join(character_path, "Cannon"))
         os.makedirs(os.path.join(character_path, "Bomb"), exist_ok=True)
@@ -216,13 +281,91 @@ class ImportOBJ(bpy.types.Operator, ImportHelper):
         bpy.ops.import_scene.obj(filepath=self.filepath)
         return {'FINISHED'}
     
-class ExportOBJ(bpy.types.Operator):
+class export_StartingBlock(bpy.types.Operator):
     """Export a OBJ File"""
-    bl_idname = "export_test.obj"
-    bl_label = "Export OBJ"
+    bl_idname = "object.start_ex_op"
+    bl_label = "コアブロック"
 
     def execute(self, context):
         export_path = os.path.join(context.scene.my_tool.path, context.scene.my_tool.name, "StartingBlock", "startingBlock")
+        if not export_path.lower().endswith('.obj'):
+            export_path += '.obj'
+        bpy.ops.export_scene.obj(filepath=export_path, use_selection=True)
+        return {'FINISHED'}
+    
+class export_Log(bpy.types.Operator):
+
+    """Export a OBJ File"""
+    bl_idname = "object.log_ex_op"
+    bl_label = "丸太"
+
+    def execute(self, context):
+        export_path = os.path.join(context.scene.my_tool.path, context.scene.my_tool.name, "Log", "log")
+        if not export_path.lower().endswith('.obj'):
+            export_path += '.obj'
+        bpy.ops.export_scene.obj(filepath=export_path, use_selection=True)
+        return {'FINISHED'}
+    
+class export_Log_short(bpy.types.Operator):
+
+    """Export a OBJ File"""
+    bl_idname = "object.log_ex_short_op"
+    bl_label = "短縮丸太"
+
+    def execute(self, context):
+        export_path = os.path.join(context.scene.my_tool.path, context.scene.my_tool.name, "Log", "short", "log")
+        if not export_path.lower().endswith('.obj'):
+            export_path += '.obj'
+        bpy.ops.export_scene.obj(filepath=export_path, use_selection=True)
+        return {'FINISHED'}
+
+class export_Cannon(bpy.types.Operator):
+
+    """Export a OBJ File"""
+    bl_idname = "object.cannon_ex_op"
+    bl_label = "大砲"
+
+    def execute(self, context):
+        export_path = os.path.join(context.scene.my_tool.path, context.scene.my_tool.name, "Cannon", "cannon")
+        if not export_path.lower().endswith('.obj'):
+            export_path += '.obj'
+        bpy.ops.export_scene.obj(filepath=export_path, use_selection=True)
+        return {'FINISHED'}
+    
+class export_Bomb(bpy.types.Operator):
+
+    """Export a OBJ File"""
+    bl_idname = "object.bomb_ex_op"
+    bl_label = "ボム"
+
+    def execute(self, context):
+        export_path = os.path.join(context.scene.my_tool.path, context.scene.my_tool.name, "Bomb", "bomb")
+        if not export_path.lower().endswith('.obj'):
+            export_path += '.obj'
+        bpy.ops.export_scene.obj(filepath=export_path, use_selection=True)
+        return {'FINISHED'}
+
+class export_Ballast(bpy.types.Operator):
+
+    """Export a OBJ File"""
+    bl_idname = "object.ballast_ex_op"
+    bl_label = "バラスト"
+
+    def execute(self, context):
+        export_path = os.path.join(context.scene.my_tool.path, context.scene.my_tool.name, "Ballast", "ballast")
+        if not export_path.lower().endswith('.obj'):
+            export_path += '.obj'
+        bpy.ops.export_scene.obj(filepath=export_path, use_selection=True)
+        return {'FINISHED'}
+
+class export_First(bpy.types.Operator):
+
+    """Export a OBJ File"""
+    bl_idname = "object.first_ex_op"
+    bl_label = "FPSMod"
+
+    def execute(self, context):
+        export_path = os.path.join(context.scene.my_tool.path, context.scene.my_tool.name, "33989506-e12a-4614-81c9-7ad8211d2e23-1", "first_parson_controller")
         if not export_path.lower().endswith('.obj'):
             export_path += '.obj'
         bpy.ops.export_scene.obj(filepath=export_path, use_selection=True)
@@ -270,9 +413,10 @@ class ImportArmaturePanel(bpy.types.Panel):
         layout.operator("object.import_armature_op")
 
         layout.separator()
-        layout.label(text="各ブロック向けのスケールへ変更")
+        layout.label(text="テンプレートのインポートとスケール変更")
         layout.operator("object.starting_block_op")
         layout.operator("object.log_op")
+        layout.operator("object.log_short_op")
         layout.operator("object.cannon_op")
         layout.operator("object.bomb_op")
         layout.operator("object.ballast_op")
@@ -280,7 +424,13 @@ class ImportArmaturePanel(bpy.types.Panel):
 
         layout.separator()
         layout.label(text="エクスポート")
-        layout.operator(ExportOBJ.bl_idname, text="Export OBJ")
+        layout.operator("object.start_ex_op")
+        layout.operator("object.log_ex_op")
+        layout.operator("object.log_ex_short_op")
+        layout.operator("object.cannon_ex_op")
+        layout.operator("object.bomb_ex_op")
+        layout.operator("object.ballast_ex_op")
+        layout.operator("object.first_ex_op")
 
 
 def register():
@@ -291,13 +441,21 @@ def register():
 
     bpy.utils.register_class(scale_StartingBlock)
     bpy.utils.register_class(scale_Log)
+    bpy.utils.register_class(scale_Log_short)
     bpy.utils.register_class(scale_Cannon)
     bpy.utils.register_class(scale_Bomb)
     bpy.utils.register_class(scale_Ballast)
     bpy.utils.register_class(scale_first)
 
     bpy.utils.register_class(ImportOBJ)
-    bpy.utils.register_class(ExportOBJ)
+
+    bpy.utils.register_class(export_StartingBlock)
+    bpy.utils.register_class(export_Log)
+    bpy.utils.register_class(export_Log_short)
+    bpy.utils.register_class(export_Cannon)
+    bpy.utils.register_class(export_Bomb)
+    bpy.utils.register_class(export_Ballast)
+    bpy.utils.register_class(export_First)
 
     bpy.types.Scene.my_tool = bpy.props.PointerProperty(type=MyProperties)
 
@@ -309,13 +467,21 @@ def unregister():
 
     bpy.utils.unregister_class(scale_StartingBlock)
     bpy.utils.unregister_class(scale_Log)
+    bpy.utils.unregister_class(scale_Log_short)
     bpy.utils.unregister_class(scale_Cannon)
     bpy.utils.unregister_class(scale_Bomb)
     bpy.utils.unregister_class(scale_Ballast)
     bpy.utils.unregister_class(scale_first)
 
     bpy.utils.unregister_class(ImportOBJ)
-    bpy.utils.unregister_class(ExportOBJ)
+
+    bpy.utils.unregister_class(export_StartingBlock)
+    bpy.utils.unregister_class(export_Log)
+    bpy.utils.unregister_class(export_Log_short)
+    bpy.utils.unregister_class(export_Cannon)
+    bpy.utils.unregister_class(export_Bomb)
+    bpy.utils.unregister_class(export_Ballast)
+    bpy.utils.unregister_class(export_First)
 
     del bpy.types.Scene.my_tool
 

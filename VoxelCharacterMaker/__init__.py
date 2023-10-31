@@ -8,7 +8,7 @@ from bpy.types import Operator, Panel
 bl_info = {
     "name": "VoxelCharacterMaker",
     "author": "Gomanosuke",
-    "version": (1, 0),
+    "version": (1, 0, 1),
     "blender": (2, 80, 0),
     "location": "View3D > Tools",
     "description": "Tools to assist in the creation of voxel characters",

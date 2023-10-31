@@ -19,10 +19,10 @@ Blender3.6.4で動作確認
 1. Blenderを開き、編集>プリファレンス>アドオン>インポートからVoxelCharacterMaker.zipを選択し、有効化
 1. "MagicaVoxel-〇〇-△△-◇◇\vox"にtemplate.voxを入れる
 
-![](Documentation\プリファレンス.png)
-![](Documentation\インストール.png)
-![](Documentation\有効化.png)
-![](Documentation\テンプレート.png)
+![](Documentation/プリファレンス.png)
+![](Documentation/インストール.png)
+![](Documentation/有効化.png)
+![](Documentation/テンプレート.png)
 
 ***
 ## モデルの作成
@@ -32,8 +32,8 @@ Blender3.6.4で動作確認
 
 ※髪と手などが接していると、離れるようにするためにはBlenderで手作業で修正しないといけないため、予め離れた状態で作ると楽
 
-![](Documentation\merge.png)
-![](Documentation\export.png)
+![](Documentation/merge.png)
+![](Documentation/export.png)
 ***
 ## Blenderのセットアップ
 1. Blenderを起動し、ビューポートのツールバーにあるVoxelCharacterMakerを開く
@@ -44,9 +44,9 @@ Blender3.6.4で動作確認
 1. "アーマチュアのセットアップ"ボタンをクリックし、モデルにアーマチュアを割り当て、ポーズモードで正しく動かせることを確認する
 1. 想定通りに動かない場合は、編集モードやウェイトペイントモードで調整する
 
-![](Documentation\setup.png)
-![](Documentation\フォルダ.png)
-![](Documentation\pose01.png)
+![](Documentation/setup.png)
+![](Documentation/フォルダ.png)
+![](Documentation/pose01.png)
 ***
 ## ブロックの作成
 1. ツールバーの"テンプレートのインポートとスケール変更"からスキンを作成したいブロック名のボタンをクリックする
@@ -56,9 +56,9 @@ Blender3.6.4で動作確認
 2. スキンフォルダの中のブロック名のフォルダに、objファイルが正しくエクスポートされていることを確認する
 3. すべてのブロックで繰り返す
    
-![](Documentation\pose02.png)
-![](Documentation\export_obj.png)
-![](Documentation\startingblock.png)
+![](Documentation/pose02.png)
+![](Documentation/export_obj.png)
+![](Documentation/startingblock.png)
 ***
 ## ワークショップへのアップロード
 1. Besiegeを起動し、スキンが正しく利用できることを確認する
@@ -68,5 +68,5 @@ Blender3.6.4で動作確認
 5. 画面に従い設定を行いアップロードする  
 
 ※最初に登録するときはアップロード、更新するときはアップデートをする
-![](Documentation\upload01.png)
-![](Documentation\upload02.png)
+![](Documentation/upload01.png)
+![](Documentation/upload02.png)

@@ -46,9 +46,10 @@ def move_and_merge_vertices(mesh_obj):
     bpy.context.view_layer.objects.active = mesh_obj
     bpy.ops.object.mode_set(mode='EDIT')
     bpy.ops.mesh.select_all(action='SELECT')
-    bpy.ops.transform.translate(value=(-2, -2, -2))
     bpy.ops.mesh.remove_doubles()
     bpy.ops.object.mode_set(mode='OBJECT')
+    bpy.ops.object.shade_flat()
+
 
 class ImportArmatureOperator(bpy.types.Operator):
     """Import Armature and Parent"""
@@ -373,7 +374,7 @@ class export_First(bpy.types.Operator):
 
 class MyProperties(bpy.types.PropertyGroup):
     path: bpy.props.StringProperty(
-        name="Besiege\Besiege_Data\Skins",
+        name="Skin Folder Path",
         description="Path to the folder",
         default="",
         maxlen=1024,

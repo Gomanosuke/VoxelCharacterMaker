@@ -17,6 +17,7 @@ Blender3.6.4で動作確認
 1. VoxelCharacterMaker.zipとtemplate.voxを、このリポジトリの[Releases](https://github.com/Gomanosuke/VoxelCharacterMaker/releases)からダウンロード
 1. [Blender](https://www.blender.org/download/)と[magicavoxel](https://ephtracy.github.io/index.html?page=mv_main)を各公式サイトからダウンロード
 1. Blenderを開き、編集>プリファレンス>アドオン>インポートからVoxelCharacterMaker.zipを選択し、有効化
+1. Blenderに「Wavefront OBJ format (legacy)」がダウンロードされたない場合ダウンロードする
 1. "MagicaVoxel-〇〇-△△-◇◇\vox"にtemplate.voxを入れる
 
 ![](Documentation/プリファレンス.png)

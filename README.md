@@ -37,7 +37,7 @@ Blender3.6.4で動作確認
 ***
 ## Blenderのセットアップ
 1. Blenderを起動し、ビューポートのツールバーにあるVoxelCharacterMakerを開く
-1. Skin Folder Pathに"Steam\steamapps\common\Besiege\Besiege_Data\Skins"、Character Nameにキャラクターの名前を設定する
+1. Skin Folder Pathに"…\Steam\steamapps\common\Besiege\Besiege_Data\Skins"、Character Nameにキャラクターの名前を設定する
 1. Texture Pathにmagicavoxelからエクスポートした画像を指定する
 1. "スキンフォルダの作成"ボタンをクリックし、指定したフォルダパスに、キャラクター名のフォルダあり、その中にテクスチャが入ったブロック名のフォルダが有ることを確認する。
 1. "OBJをインポート"ボタンからエクスポートしたobjファイルをインポートする
